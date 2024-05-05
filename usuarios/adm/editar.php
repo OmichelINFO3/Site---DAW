@@ -1,0 +1,48 @@
+<?php
+	session_start();
+    include_once "../../class/cliente.class.php";
+    include_once "../../class/cliente.DAO.class.php";
+    if(!isset($_SESSION['logadoAdm'])){
+		header("location=../login.php");
+	}
+
+    $id_cliente = $_GET['id_cliente'];
+    $objClienteDAO = new clienteDAO();
+    $retorno = $objClienteDAO->retornarUnico($id_cliente);
+    ?>
+      <!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="jquery.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,369;1,369&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../CSS/style.css">
+</head>
+<body>
+    <header>
+        <h1 id="titulo">Boutique Elegance</h1>
+    </header>
+    <div id="container">
+    <form class="form-listar-editar" action="editar_ok.php" method="POST">
+        <p>Nome</p>
+        <input class="inputs" type="text" name="nome" value="<?=$retorno['nome_cliente'];?>">
+        <br />  
+        <p>Email</p>
+        <input class="inputs"type="text" name="email" value="<?=$retorno['email'];?>">
+        <input class="inputs"type="text" name="id" value="<?=$retorno['id_cliente'];?>" hidden><br />
+        <p>É adm?</p>
+        <input class="inputs"type="radio" name="adm" value="1" checked>sim
+        <input class="inputs"type="radio" name="adm" value="0">não
+        <br />
+        <button type="submit" class="btn-op">Enviar</button>
+    </form>
+    </div>
+</body>
+</html>
