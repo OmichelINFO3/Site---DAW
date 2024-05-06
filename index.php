@@ -22,8 +22,17 @@
             <h1>Bem Vindo A boutique Elegance</h1>
             <p>O seu portal online de moda e acessórios, onde elegância e sofisticação se encontram ao alcance de um clique. Em nossa loja virtual, oferecemos uma experiência de compra exclusiva, dedicada aos amantes da moda que buscam peças únicas e atemporais sem sair de casa.<br><br>
 A "Boutique Elegance" é mais do que um e-commerce; é um espaço cuidadosamente curado que reflete as últimas tendências e o melhor do design de moda mundial. Nossa seleção abrange desde roupas que definem a estação até acessórios que são verdadeiras declarações de estilo, garantindo que cada cliente encontre exatamente o que procura para expressar sua individualidade e elegância.</p>
-            <a href="usuarios/login.php" class="btn-op" id="btn-login-conteudo">Fazer Login</a>
+            <a href="usuarios/login.php" class="btn-op">Fazer Login</a>
+            <a href="usuarios/cadastro_usuario.php" class="btn-op">Fazer Cadastro</a>
+            <div style="display: flex; justify-content:center;">
+            <?php if(isset($_GET['cadastrarok']))
+                    echo "<p style='font-family: roboto condensed; text-align:center; color:white;  background-color: green; width:180px; margin: 4px; margin-top: 20px; padding:4px; border-radius: 10px;'>Cadastro realizado com sucesso</p>";?>
+            </div>
+            <div style="display: flex; justify-content:center;">
+            <?php if(isset($_GET['loginok']))
+                    echo "<p style='font-family: roboto condensed; text-align:center; color:white;  background-color: green; width:180px; margin: 4px; margin-top: 20px; padding:4px; border-radius: 10px;'>Login realizado com sucesso</p>";?>
+            </div>
+            </div>
         </div>
-    </div>
 </body>
 </html>
